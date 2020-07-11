@@ -1412,6 +1412,7 @@ a {
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
+  vertical-align: top;
   color: var(--black);
 
   background-color: var(--grey);
