@@ -43,7 +43,7 @@ feedbackOpen.addEventListener("click", function(evt) {
     nameField.value = storageName;
     emailField.focus();
   } else {
-    feedbackField.focus();
+    nameField.focus();
   }
   feedbackField.value = "";
 });
@@ -65,17 +65,25 @@ window.addEventListener("keydown", function(evt) {
 const addErr = () => {
   for (let i = 0; i < fields.length; i++) {
     let fieldItem = fields[i];
-    fieldItem.classList.add('feedback-error');
-    setTimeout(function() {
-      fieldItem.classList.remove('feedback-error');
-    }, 250);
+    if (!fieldItem.value ) {
+      fieldItem.classList.add("feedback-error");
+      setTimeout(function() {
+        fieldItem.classList.remove("feedback-error");
+      }, 250);
+    }
+      if (!emailField.value.includes("@", ".") ) {
+      emailField.classList.add("feedback-error");
+      setTimeout(function() {
+        emailField.classList.remove("feedback-error");
+      }, 250);
+    }
   }
 }
 
 const deleteErr = () => {
   for (let i = 0; i < fields.length; i++) {
     let fieldItem = fields[i];
-    fieldItem.classList.remove('feedback-error');
+    fieldItem.classList.remove("feedback-error");
   }
 }
 
@@ -83,7 +91,6 @@ feedbackPopup.addEventListener("submit", function(evt) {
   if (!nameField.value || !emailField.value || !feedbackField.value) {
     evt.preventDefault();
     addErr();
-    feedbackPopup.offsetWidth = feedbackPopup.offsetWidth;
   } else {
     if (isStorageSupport) {
       localStorage.setItem("name", nameField.value);
