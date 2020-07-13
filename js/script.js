@@ -71,7 +71,7 @@ const addErr = () => {
         fieldItem.classList.remove("feedback-error");
       }, 250);
     }
-      if (!emailField.value.includes("@", ".") ) {
+      if (!emailField.value.includes("@") ) {
       emailField.classList.add("feedback-error");
       setTimeout(function() {
         emailField.classList.remove("feedback-error");
